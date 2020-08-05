@@ -1,0 +1,20 @@
+<h1>Customers</h1>
+
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Email</th>
+      <th scope="col">Email</th>
+      <th scope="col">View Rewards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{customer.firstName}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.email}}</td>
+      <td><a class="table-link" [routerLink]="['/customer', customer.id]">View</a></td>
+    </tr>
+  </tbody>
+</table>

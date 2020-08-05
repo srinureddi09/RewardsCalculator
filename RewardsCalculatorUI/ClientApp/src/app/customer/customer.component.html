@@ -1,0 +1,51 @@
+<div class="container" *ngIf="customer">
+  <h1>{{customer.fullName}} Reward Points</h1>
+  <div class="row">
+    <div class="card" style="width: 18rem; float: left; margin-left: 50px;">
+      <div class="border-bottom-black-line">
+        <p style="text-align: center">Total Rewards Earned</p>
+      </div>
+      <div class="card-body">
+        <h5 style="text-align: center" class="card-title">{{totalRewards()}}</h5>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; float: left; margin-left: 50px;">
+      <div class="border-bottom-black-line">
+        <p style="text-align: center">Total Rewards Earned(Last 3 Months)</p>
+      </div>
+      <div class="card-body">
+        <h5 style="text-align: center" class="card-title">{{calculatePastThreeMonthsRewards()}}</h5>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; float: left; margin-left: 50px;">
+      <div class="border-bottom-black-line">
+        <p style="text-align: center">Current Month Rewards</p>
+      </div>
+      <div class="card-body">
+        <h5 style="text-align: center" class="card-title">{{calculteCurrentMonthRewards()}}</h5>
+      </div>
+    </div>
+  </div>
+  <p>{{customer.fullName}} Transactions</p>
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Rewards Earned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of customer.transactions">
+        <td>{{transaction.name}}</td>
+        <td>${{transaction.amount}}</td>
+        <td>{{transaction.date | date:'shortDate'}}</td>
+        <td>{{transaction.rewardEarned}}</td>
+      </tr>
+      <tr style="text-align: center" *ngIf="customer.transactions.length === 0">
+        <td colspan="4">No transactions found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
